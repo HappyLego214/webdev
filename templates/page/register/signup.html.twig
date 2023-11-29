@@ -1,0 +1,92 @@
+{% extends 'registerbase.html.twig' %}
+
+{% block main %}
+<main id="login-main">  
+    <div class="first-layer-container">
+        <div class="login-center-container">
+            <div class="center-login-container">
+                <div class="login-title">
+                    <h2>Create Your Account</h2>
+                </div>
+                <form name="signup" id="login-form">
+                    <div class="mb-3">
+                        <div class="row">
+                            <label for="col" class="form-label">Name</label>
+                            <div class="col">
+                                <input type="text" class="form-control name" id="firstName" data-type="First Name" aria-describedby="firstName" pattern="/^[a-z ,.'-]+$/i" required>
+                                <div class="form-text">First Name</div>
+                                <div class="form-text error msg-inactive">
+                                    <span class="material-symbols-outlined">
+                                        error
+                                    </span>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control name" id="lastName" data-type="Last Name" aria-describedby="lastName" pattern="/^[a-z ,.'-]+$/i" required>
+                                <div class="form-text">Last Name</div>
+                                <div class="form-text error msg-inactive">
+                                    <span class="material-symbols-outlined">
+                                        error
+                                    </span>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-item">
+                        <label for="loginEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="loginEmail" data-type="Email" aria-describedby="loginEmail" pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g" required>
+                        <div class="form-text error msg-inactive">
+                        <span class="material-symbols-outlined">
+                            error
+                        </span>
+                        <p></p>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-item">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control"     data-type="Password" id="loginPassword" pattern="/^(?=.*[A-Za-z])(?=.$*\d)[_@./#&+A-Za-z\d]{8,}$/" required>
+                        <div class="form-text">
+                        Minimum eight characters, at least one letter and one number.
+                        </div>
+                        <div class="form-text error msg-inactive">
+                        <span class="material-symbols-outlined">
+                            error
+                        </span>
+                        <p></p>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-item">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword" required>
+                        <div class="form-text error msg-inactive">
+                            <span class="material-symbols-outlined">
+                                error
+                            </span>
+                            <p></p>
+                        </div>
+                    </div>
+                        <div class="mb-3 form-item">
+                        <label for="contactNumber" class="form-label">Contact Number</label>
+                        <input type="tel" pattern="((^(\+)(\d){12}$)|(^\d{11}$))" class="form-control" id="contactNumber">
+                        <div class="form-text">
+                            Optional
+                            </div>
+                        <div class="form-text error msg-inactive">
+                            <span class="material-symbols-outlined">
+                                error
+                            </span>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="accSubmit-form-btn-container">
+                        <button id="signupBtn" class="btn btn-primary">Login to 'Company Name'</button>
+                        <a href="{{ path('app_homepage') }}">Return To Website</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
