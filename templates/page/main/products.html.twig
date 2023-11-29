@@ -1,0 +1,121 @@
+{% extends 'mainbase.html.twig' %}
+
+{% block main %}
+<main id="products-main">  
+    <div class="products-first-layer-container">
+        <div class="options-bar">
+            <div class="searchbar-container">
+                <h5>FILTER</h5>
+                <div class="searchbar">
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+                    <input class="filter" type="text" placeholder="Search Here">
+                </div>
+            </div>
+            <div class="recent-search-container">
+                <h5>RECENT SEARCHES</h5>
+                <div class="recent-search">
+                    <div class="searchup">
+                        <span class="material-symbols-outlined history">
+                            history
+                        </span>
+                        <p>Search Example</p>
+                        <span class="material-symbols-outlined close">
+                            close
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="category-container">
+                <h5>CATEGORY</h5>
+                <div class="category-list">
+                    <button>Headset</button>
+                    <button>Mouse</button>
+                    <button>Keyboard</button>
+                    <button>Monitors</button>
+                    <button>Speakers</button>
+                </div>
+            </div>
+            <div class="sort-container">
+                <h5>SORT BY</h5>
+                <div class="sort-list">
+                    <button>Popularity</button>
+                    <button>High Price</button>
+                    <button>Low Price</button>
+                    <button>High Reviews</button>
+                    <button>Low Reviews</button>
+                    <button>Newest</button>
+                    <button>Oldest</button>
+                </div>
+            </div>
+            <div class="price-range-container">
+                <h5>PRICE RANGE</h5>
+                <div class="price-range">
+                    <input type="text" name="highPriceRange" id="" placeholder="Max Price">
+                    <input type="text" name="lowPriceRange" id="" placeholder="Min Price">
+                </div>
+            </div>
+            <div class="popular">
+                <h5>POPULAR PRODUCTS</h5>
+                <div class="popular-product-container">
+                    <div class="popular-image-placeholder">
+                    </div>
+                    <div class="product-text-container">
+                        <h5>Product Title Name</h5>
+                        <div class="reviews">
+                            <span class="material-symbols-outlined">
+                                star
+                            </span>
+                            <p>4.6</p>
+                            <p>88 Reviews</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular-product-container">
+                    <div class="popular-image-placeholder">
+                    </div>
+                    <div class="product-text-container">
+                        <h5>Product Title Name</h5>
+                        <div class="reviews">
+                            <span class="material-symbols-outlined">
+                                star
+                            </span>
+                            <p>4.6</p>
+                            <p>88 Reviews</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="gallery-container">
+            <div class="product-gallery">
+            {% for product in products %}
+                <div class="product-card">
+                    <div class="image-placeholder"></div>
+                    <div class="details-container">
+                        <div class="left-details">
+                            <button class="item-placeholder" type="button">
+                                <span class="material-symbols-outlined">favorite
+                            </button>
+                            </span>
+                        </div>
+                        <div class="mid-details">
+                            <h5>{{product.title}}</h1>
+                            <h5>${{product.price}}</h5>
+                        </div>
+                        <div class="right-details">
+                            <button class="item-placeholder" type="button">
+                                <span class="material-symbols-outlined">add
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

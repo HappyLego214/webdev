@@ -14,6 +14,23 @@ class mainController extends AbstractController
         return $this->render('page/main/home.html.twig');
     }
 
+    #[Route('/products', name: 'app_products')]
+    public function productspage(): Response
+    {
+        $products = [
+            ['title' => 'Big Drip', 'price' => '100' ],
+            ['title' => 'Elf Bar', 'price' => '75' ],
+            ['title' => 'SKE', 'price' => '90' ],
+            ['title' => 'RAD', 'price' => '150' ],
+            ['title' => 'Loop', 'price' => '50' ],
+        ];
+
+        return $this->render('page/main/products.html.twig',
+    [
+        'products' => $products,
+    ]);
+    }
+
     #[Route('/sample', name: 'app_sample')]
     public function samplepage(): Response
     {
