@@ -1,0 +1,31 @@
+{% extends 'registerbase.html.twig' %}
+
+{% block main %}
+ <main id="login-main">  
+    <div class="first-layer-container">
+        <div class="login-center-container">
+            <div class="center-login-container">
+                <div class="login-title">
+                    <h2>Welcome Back</h2>
+                </div>
+                <form id="login-form">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword">
+                        <div id="emailHelp" class="form-text">
+                        <a href="">Forgot Password?</a></div>
+                    </div>
+                    <div class="accSubmit-form-btn-container">
+                        <button type="submit" class="btn btn-primary">Login to 'Company Name'</button>
+                        <a href="{{ path('app_homepage') }}">Return To Website</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
