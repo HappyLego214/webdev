@@ -1,0 +1,50 @@
+{% extends 'registerbase.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block main %}
+<main id="login-main">
+    <div class="first-layer-container">
+        <div class="login-center-container">
+            <div class="center-login-container">
+                <div class="login-title">
+                    <h2>Create Your Account</h2>
+                </div>
+                <div id="login-form">
+                    {{ form_start(form) }}
+                    <div class="mb-3 form-item">
+                        {{ form_errors(form) }}
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col">
+                            {{ form_row(form.firstName) }}
+                            </div>
+                            <div class="col">
+                            {{ form_row(form.lastName) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-item">
+                        {{ form_row(form.email, {'label': 'Email Address'}) }}
+                    </div>
+                    <div class="mb-3 form-item">
+                        {{ form_row(form.plainPassword, {'label': 'Password'}) }}
+                        <div class="form-text">
+                            Minimum eight characters, at least one letter and one number.
+                        </div>
+                    </div>
+                    <div class="mb-3 form-item">
+                        {{ form_row(form.contact) }}
+                    </div>
+                    <div class="accSubmit-form-btn-container">
+                        {{ form_row(form.submit) }}
+                        <a href="{{ path('app_homepage') }}">Return To Website</a>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

@@ -39,6 +39,7 @@ body::-webkit-scrollbar {
 
 /* Header */
 
+
 header {
     display: grid;
     flex-wrap: wrap;
@@ -239,7 +240,7 @@ header {
     margin-top: 10px;
     position: relative;
     display: grid;
-    grid-template-rows: repeat(auto-fill minmax(100px, 100px));
+    grid-template-rows: repeat(auto-fill, minmax(100px, 100px));
 }
 
 .searchup .history {
@@ -480,6 +481,12 @@ header {
     margin-bottom: 25px;
 }
 
+.errorMsg {
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+
 .center-form-container {
     height: 700px;
     width: 800px;
@@ -634,7 +641,7 @@ header {
     display: flex;
     justify-content: center;
     font-size: xx-large;
-    color: gray;
+    color: darkgray;
 }
 
 .bottom-text  {
