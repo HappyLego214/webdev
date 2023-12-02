@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,11 +17,17 @@ class mainController extends AbstractController
         return $this->render('page/main/home.html.twig');
     }
 
-    #[Route('/products', name: 'app_products')]
-    public function productspage(EntityManagerInterface $entityManager): Response
+    #[Route('/products/{slug}', name: 'app_products')]
+    public function productspage(ProductRepository $productRepo, string $slug = null): Response
     {
-        $productRepo = $entityManager->getRepository(Product::class);
-        $products = $productRepo->findAll();
+        if ($slug == 'ASC') {
+            $products = $productRepo->findBy([],['price' => $slug]);
+        }
+        else if ($slug == 'DESC') {
+            $products = $productRepo->findBy([],['price' => $slug]);
+        } else {
+            $products = $productRepo->findAll();
+        }
 
         return $this->render('page/main/products.html.twig',
     [
@@ -38,11 +45,5 @@ class mainController extends AbstractController
     public function aboutpage(): Response
     {
         return $this->render('page/main/about.html.twig');
-    }
-
-    #[Route('/signup', name: 'app_signup')]
-    public function registerpage(): Response
-    {
-        return $this->render('page/register/signup.html.twig');
     }
 }

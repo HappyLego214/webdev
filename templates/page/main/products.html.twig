@@ -93,7 +93,7 @@
             <div class="product-gallery">
             {% for product in products %}
                 <div class="product-card">
-                    <div class="image-placeholder"></div>
+                    <img class="responsive" src="{{ product.imageUrl(400, 300) }}" alt="Placeholder Image">
                     <div class="details-container">
                         <div class="left-details">
                             <button class="item-placeholder" type="button">

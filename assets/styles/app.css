@@ -528,7 +528,7 @@ header {
 .product-gallery {
     display: grid;
     gap: 25px;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-template-rows: 400px;
     margin: 25px;
 }
@@ -538,14 +538,14 @@ header {
     display: grid;
     grid-template-rows: 1fr 100px;
     max-height: 400px;
-    max-width: 500px;
+    max-width: 400px;
 }
 
 /* TEMP PLACEHOLDER */
 
-.image-placeholder {
-    background-color: gainsboro;
-    height: 300px;
+.responsive {
+    width: 100%;
+    height: auto;
 }
 
 .popular-product-container {

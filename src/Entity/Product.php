@@ -78,4 +78,14 @@ class Product
 
         return $this;
     }
+
+    public function getImageUrl(int $width, $height): string
+    {
+        return sprintf(
+            'https://picsum.photos/id/%d/%d/%d',
+            ($this->getId() + 50) % 1000,
+            $width,
+            $height,
+        );
+    }
 }
