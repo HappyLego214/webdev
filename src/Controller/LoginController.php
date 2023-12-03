@@ -10,26 +10,16 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class LoginController extends AbstractController
 {
     #[Route('/login', name: 'app_login')]
-    public function index(AuthenticationUtils $authUtils): Response
+    public function login(AuthenticationUtils $authUtils): Response
     {
-        $error = $authUtils->getLastAuthenticationError();
-        $lastUsername = $authUtils->getLastUsername();
-
         return $this->render('page/register/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
+            'error' => $authUtils->getLastAuthenticationError(),
         ]);
     }
 
-    #[Route('/fail', name: 'app_loginFail')]
-    public function fail(): Response
+    #[Route('/logout', name: 'app_logout')]
+    public function logout(): Response
     {
-        return new Response('Failure!');
-    }
-
-    #[Route('/success', name: 'app_loginSuccess')]
-    public function success(): Response
-    {
-        return new Response('Success!');
+       throw new \Exception('Logout() Should Not Be Reached!');
     }
 }

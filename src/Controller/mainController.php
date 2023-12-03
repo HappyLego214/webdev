@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Product;
-use App\Repository\ProductRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,37 +10,34 @@ use Symfony\Component\HttpFoundation\Response;
 class mainController extends AbstractController
 {
     #[Route('/', name: 'app_homepage')]
-    public function homepage(): Response
+    public function homePage(): Response
     {
         return $this->render('page/main/home.html.twig');
     }
 
-    #[Route('/products/{slug}', name: 'app_products')]
-    public function productspage(ProductRepository $productRepo, string $slug = null): Response
+    #[Route('/profile/{slug}', name: 'app_profile')]
+    public function profilePage($slug, UserRepository $userRepository): Response
     {
-        if ($slug == 'ASC') {
-            $products = $productRepo->findBy([],['price' => $slug]);
-        }
-        else if ($slug == 'DESC') {
-            $products = $productRepo->findBy([],['price' => $slug]);
-        } else {
-            $products = $productRepo->findAll();
-        }
+        $user = $userRepository->find($slug);
 
-        return $this->render('page/main/products.html.twig',
-    [
-        'products' => $products,
-    ]);
+        return $this->render('page/profile/profile.html.twig');
     }
 
+    #[Route('/admin', name: 'app_admin')]
+    public function adminpage(): Response
+    {
+        dd('check');
+    }
+
+
     #[Route('/sample', name: 'app_sample')]
-    public function samplepage(): Response
+    public function samplePage(): Response
     {
         return $this->render('page/main/sample.html.twig');
     }
 
     #[Route('/about', name: 'app_about')]
-    public function aboutpage(): Response
+    public function aboutPage(): Response
     {
         return $this->render('page/main/about.html.twig');
     }

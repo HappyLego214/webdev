@@ -30,23 +30,17 @@
             <div class="category-container">
                 <h5>CATEGORY</h5>
                 <div class="category-list">
-                    <button>Headset</button>
-                    <button>Mouse</button>
-                    <button>Keyboard</button>
-                    <button>Monitors</button>
-                    <button>Speakers</button>
+                    {% for category in categories %}
+                    <a href="/products/{{category}}">{{ category|replace({'_': ' '}) }}</a>
+                    {% endfor %}
                 </div>
             </div>
             <div class="sort-container">
                 <h5>SORT BY</h5>
                 <div class="sort-list">
-                    <button>Popularity</button>
-                    <button>High Price</button>
-                    <button>Low Price</button>
-                    <button>High Reviews</button>
-                    <button>Low Reviews</button>
-                    <button>Newest</button>
-                    <button>Oldest</button>
+                    {% for sort in sortList %}
+                    <a href={{sort.link}}>{{ sort.name }}</a>
+                    {% endfor %}
                 </div>
             </div>
             <div class="price-range-container">

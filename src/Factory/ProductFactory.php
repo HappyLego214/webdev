@@ -49,6 +49,13 @@ final class ProductFactory extends ModelFactory
         return [
             'name' => self::faker()->text(8),
             'description' => self::faker()->text(100),
+            'rating' => self::faker()->randomFloat(1,0,10),
+            'category' => self::faker()->randomElement([
+                'Vape_Pen',
+                'Box_Mod',
+                'POD',
+                'Disposable',
+                'Cigalike',]),
             'price' => self::faker()->randomNumber(2),
             'quantity' => self::faker()->randomNumber(3),
         ];

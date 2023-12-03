@@ -9,14 +9,14 @@
                     <h2>Welcome Back</h2>
                 </div>
                 {% if error %}
-                    <div class="errorMsg">
+                    <div class="alert alert-danger">
                         {{ error.messageKey|trans(error.messageData, 'security') }}
                     </div>
                 {% endif %}
                 <form action="{{ path('app_login') }}" id="login-form" method="post">
                     <div class="mb-3">
                         <label for="username" class="form-label">Email address</label>
-                        <input type="email" name="_username" class="form-control" id="loginEmail" aria-describedby="emailHelp">
+                        <input type="email" name="_email" class="form-control" id="loginEmail" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
@@ -28,7 +28,7 @@
                         <button type="submit" class="btn btn-primary">Login to 'Company Name'</button>
                         <a href="{{ path('app_homepage') }}">Return To Website</a>
                     </div>
-                    <input type="hidden" name="go_to" value="{{ path('app_loginSuccess') }}">
+                    <input type="hidden" name="go_to" value="{{ path('app_homepage') }}">
                 </form>
             </div>
         </div>

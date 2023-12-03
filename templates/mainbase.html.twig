@@ -14,7 +14,7 @@
         <title>Homepage</title>
     </head>
     <body id="main-body">
-        <header>
+    <header>
             <div class="left-header">
                 <nav class="nav-container">
                     <ul>
@@ -35,23 +35,50 @@
                 </div>
             </div>
             <div class="right-header">
-                <div class="sample-container">
+                {% if not app.user %}
+                    <div class="sample-container">
                     <a href="{{ path('app_sample') }}#form">REQUEST SAMPLE</a>
                 </div>
-                <div class="icons-container">
-                    <a href="{{ path('app_login') }}" class="header-icon-link">
+                    <div class="icons-container">
+                        <a href="{{ path('app_login') }}" class="header-icon-link">
+                            <span class="material-symbols-outlined">
+                                person
+                            </span>
+                            <p>Log in</p>
+                        </a>
+                        <a href="{{ path('app_login') }}" class="header-icon-link" type="button">
+                            <span id="shopping_cart" class="material-symbols-outlined">
+                                shopping_cart
+                            </span>
+                            <p>Cart</p>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="sample-container">
+                        <h3>Hello, </h3>
+                        <h3>{{app.user.slug | capitalize }}</h3>
+                    </div>
+                    <div class="icons-container">
+                        <a href="{{ path('app_logout') }}" class="header-icon-link">
                         <span class="material-symbols-outlined">
                             person
                         </span>
-                        <p>Log in</p>
-                    </a>
-                    <a href="" class="header-icon-link" type="button">
+                            <p>Log out</p>
+                        </a>
+                        <a href="" class="header-icon-link" type="button">
                         <span id="shopping_cart" class="material-symbols-outlined">
                             shopping_cart
                         </span>
-                        <p>Cart</p>
-                    </a>
-                </div>
+                            <p>Cart</p>
+                        </a>
+                        <a href="{{ path('app_addProduct') }}" class="header-icon-link" type="button">
+                        <span id="add_box" class="material-symbols-outlined">
+                            add_box
+                        </span>
+                            <p>Add Product</p>
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         </header>
         {% block main %}

@@ -26,6 +26,12 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $category = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 1, nullable: true)]
+    private ?string $rating = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,5 +93,29 @@ class Product
             $width,
             $height,
         );
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getRating(): ?string
+    {
+        return $this->rating;
+    }
+
+    public function setRating(?string $rating): static
+    {
+        $this->rating = $rating;
+
+        return $this;
     }
 }

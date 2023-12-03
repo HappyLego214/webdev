@@ -15,7 +15,6 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
         // $product = new Product();
         // $manager->persist($product);
 
-        UserFactory::createOne(['email' => 'anthony21josh@gmail.com', 'password' => 'helloThere']);
         UserFactory::createMany(10);
 
         $manager->flush();

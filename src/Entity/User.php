@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\Slug;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -13,6 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    use TimestampableEntity;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -30,9 +33,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
-    private \DateTimeImmutable $registerDate;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $contact = null;
 
@@ -41,6 +41,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $lastName = null;
+
+    #[ORM\Column(length: 255, unique: true)]
+    #[Slug(fields: ['firstName'])]
+    private ?string $slug = null;
 
     public function __construct()
     {
@@ -117,11 +121,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getRegisterDate(): ?\DateTimeImmutable
-    {
-        return $this->registerDate;
-    }
-
     public function setRegisterDate(\DateTimeImmutable $registerDate): static
     {
         $this->registerDate = $registerDate;
@@ -161,6 +160,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastName(string $lastName): static
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }
