@@ -1,0 +1,50 @@
+{% extends 'mainbase.html.twig' %}
+{% block main %}
+    <main id="cart-main">
+        <div class="cart-first-layer-container">
+            <div class="cart-container">
+                <div class="cart">
+                    <div class="cart-title">
+                        <h3>Shopping cart</h3>
+                    </div>
+                    <div class="cart-details">
+                        <h5>Product</h5>
+                        <h5>Price</h5>
+                        <h5>Quantity</h5>
+                        <h5>Subtotal</h5>
+                    </div>
+                    <div class="cart-gallery"></div>
+                    <div class="cart-options">
+                        <div class="coupon">
+                            <input type="text" placeholder="Coupon Code">
+                            <button>Apply Coupon</button>
+                        </div>
+                        <div class="empty-cart">
+                            <button>Empty Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-form">
+                <div class="cartForm-title">
+                    <h3>Cart totals</h3>
+                </div>
+                <div class="cartForm-subtotal">
+                    <h5>Subtotal</h5>
+                    <h5>$550.00</h5>
+                </div>
+                <div class="cartForm-shipping">
+                    <h5>Shipping</h5>
+                    <h5>$60.00</h5>
+                </div>
+                <div class="cartForm-total">
+                    <h5>Total</h5>
+                    <h5>$610.00</h5>
+                </div>
+                <div class="cartForm-button">
+                    <button>Proceed To Checkout</button>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

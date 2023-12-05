@@ -99,9 +99,11 @@
                             <h5>${{product.price}}</h5>
                         </div>
                         <div class="right-details">
-                            <button class="item-placeholder" type="button">
+                            <a href="{{ path('app_showProduct', {
+                                id: product.id
+                            }) }}">
                                 <span class="material-symbols-outlined">add</span>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

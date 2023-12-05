@@ -13,12 +13,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends AbstractController
 {
-    #[Route('/products/{slug}', name: 'app_products')]
+    #[Route('/browse/{slug}', name: 'app_products')]
     public function productPage(ProductRepository $productRepo, string $slug = null): Response
     {
-
         // REFACTOR SOON
-
         $sortList = [
             ['name' => 'Popularity', 'link' => ''],
             ['name' => 'High Price', 'link' => '/products/desc'],
@@ -83,6 +81,15 @@ class ProductController extends AbstractController
 
         return $this->render('page/main/addproduct.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/browse/products/{id}', name: 'app_showProduct')]
+    public function showProduct($id, ProductRepository $productRepository): Response
+    {
+        $product = $productRepository->find($id);
+        return $this->render('page/main/item.html.twig',[
+            'product' => $product,
         ]);
     }
 }

@@ -29,7 +29,6 @@ class mainController extends AbstractController
         dd('check');
     }
 
-
     #[Route('/sample', name: 'app_sample')]
     public function samplePage(): Response
     {

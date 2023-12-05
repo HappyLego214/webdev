@@ -1,0 +1,28 @@
+{% extends 'mainbase.html.twig' %}
+{% block main %}
+<main id="item-main">
+    <div class="item-first-layer-container">
+        <div class="item-image">
+            <img src="{{ product.imageUrl(550, 400) }}" alt="">
+        </div>
+        <div class="item-menu">
+            <div class="item-name-container">
+                <h3>{{ product.name }}</h3>
+                <h5>{{ product.category|replace({'_': ' '}) }}</h5>
+                <h5>Rating: {{ product.rating }}</h5>
+            </div>
+            <div class="item-price-container">
+                <h5>${{ product.price }}</h5>
+            </div>
+            <div class="item-desc-container">
+                <p>
+                    {{ product.description }}
+                </p>
+            </div>
+            <button type="submit">
+                Purchase Now
+            </button>
+        </div>
+    </div>
+</main>
+{% endblock %}
