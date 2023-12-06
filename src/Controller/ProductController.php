@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Order;
 use App\Entity\Product;
+use App\Form\AddOrderType;
 use App\Form\AddProductType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,10 +21,10 @@ class ProductController extends AbstractController
         // REFACTOR SOON
         $sortList = [
             ['name' => 'Popularity', 'link' => ''],
-            ['name' => 'High Price', 'link' => '/products/desc'],
-            ['name' => 'Low Price', 'link' => '/products/asc'],
-            ['name' => 'High Reviews', 'link' => '/products/high'],
-            ['name' => 'Low Reviews', 'link' => '/products/low'],
+            ['name' => 'High Price', 'link' => '/browse/desc'],
+            ['name' => 'Low Price', 'link' => '/browse/asc'],
+            ['name' => 'High Reviews', 'link' => '/browse/high'],
+            ['name' => 'Low Reviews', 'link' => '/browse/low'],
         ];
 
         $categories = [
@@ -85,10 +87,32 @@ class ProductController extends AbstractController
     }
 
     #[Route('/browse/products/{id}', name: 'app_showProduct')]
-    public function showProduct($id, ProductRepository $productRepository): Response
+    public function showProduct(
+        $id, EntityManagerInterface $entityManager, Request $request, ProductRepository $productRepository): Response
     {
         $product = $productRepository->find($id);
+        $user = $this->getUser()->getId();
+
+        $order = new Order();
+        $order->setProductID((int)$id);
+        $order->setUserID($user);
+        $order->setPrice($product->getPrice());
+        $order->setQuantity(1);
+        $form = $this->createForm(AddOrderType::class, $order);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+
+            $entityManager->persist($order);
+            $entityManager->flush();
+            // do anything else you need here, like send an email
+
+            return $this->redirectToRoute('app_cart');
+        }
+
         return $this->render('page/main/item.html.twig',[
+            'form' => $form->createView(),
             'product' => $product,
         ]);
     }

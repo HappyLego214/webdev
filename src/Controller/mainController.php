@@ -18,6 +18,7 @@ class mainController extends AbstractController
     #[Route('/profile/{slug}', name: 'app_profile')]
     public function profilePage($slug, UserRepository $userRepository): Response
     {
+        // TODO: PROFILE PAGE ??
         $user = $userRepository->find($slug);
 
         return $this->render('page/profile/profile.html.twig');
@@ -26,6 +27,7 @@ class mainController extends AbstractController
     #[Route('/admin', name: 'app_admin')]
     public function adminpage(): Response
     {
+        // TODO: ADMIN PAGE ??
         dd('check');
     }
 

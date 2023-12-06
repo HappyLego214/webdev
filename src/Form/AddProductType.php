@@ -6,6 +6,7 @@ use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,7 +21,7 @@ class AddProductType extends AbstractType
         $builder
             ->add('description', TextType::class)
             ->add('quantity', IntegerType::class)
-            ->add('price', IntegerType::class)
+            ->add('price', NumberType::class)
             ->add('name', TextType::class)
             ->add('category', ChoiceType::class, [
                 'choices' => [

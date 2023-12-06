@@ -13,7 +13,32 @@
                         <h5>Quantity</h5>
                         <h5>Subtotal</h5>
                     </div>
-                    <div class="cart-gallery"></div>
+                    <div class="cart-gallery">
+                        {% for product in products %}
+                            {% for item in product %}
+                                <div class="cart-card">
+                                    <div class="cartgcal-remove-container">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </div>
+                                    <div class="cartgal-image-container">
+                                        <img class="responsive" src="{{ item.imageUrl(300, 200) }}" alt="Placeholder Image">
+                                    </div>
+                                    <div class="cartgal-title-container">
+                                        <h6>{{ item.name }}</h6>
+                                    </div>
+                                    <div class="cartgal-price-container">
+                                        <h6>${{ item.price }}</h6>
+                                    </div>
+                                    <div class="cartgal-quantity-container">
+                                        <h6>1</h6>
+                                    </div>
+                                    <div class="cartgal-subtotal-container">
+                                        <h6>${{ item.price }}</h6>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
                     <div class="cart-options">
                         <div class="coupon">
                             <input type="text" placeholder="Coupon Code">

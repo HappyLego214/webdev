@@ -19,9 +19,13 @@
                     {{ product.description }}
                 </p>
             </div>
-            <button type="submit">
-                Purchase Now
-            </button>
+            <div class="item-form">
+            {{ form_start(form) }}
+            </div>
+            {{ form_row(form.submit, {'label': 'Purchase'}) }}
+            <div class="item-form">
+            {{ form_end(form) }}
+            </div>
         </div>
     </div>
 </main>
